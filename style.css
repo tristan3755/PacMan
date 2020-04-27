@@ -1,0 +1,19 @@
+#grillePacman{
+    display: grid;
+    grid-template-columns: repeat(19,40px);
+    grid-template-rows: repeat(22, 40px);
+  }
+
+
+
+.mur{
+    background-color: blue;
+}
+
+.sol{
+    background-color: black;
+}
+
+.bonbon{
+    background-image: url(./img/bonbon.gif);
+}
