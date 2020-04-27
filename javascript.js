@@ -25,32 +25,36 @@ let maGrille = [
 
 
 
-For(let i in maGrille){
+for(let i in maGrille){
 
-  var monPacman=document.createElement('div')
-  
+  for(let j in maGrille[i]){
 
-  for(let  j in maGrile[i]){
-
-    if(maGrille==0){
+    
+    
     var monElem=document.createElement('div')
-    monElem.id = "mur" + i
+
+    if(maGrille[i][j]==0){
+    
+    monElem.classList.add("mur")
+    
     }
 
-    if(maGrille==1){
-    var monElem1=document.createElement('div')
-    monElem1.id = "sol" + i
+    else if(maGrille[i][j]==1){
+    
+    monElem.classList.add("sol")
+    
     }
 
 
-    if(maGrille==2){
-    var monElem2=document.createElement('div')
-    monElem2.id = "bonbon" + i
+   else if(maGrille[i][j]==2){
+    
+    monElem.classList.add("bonbon")
+    
     }
-
+    document.getElementById('grillePacman').appendChild(monElem)
   }
 
-document.getElementById('grillePacman').appendChild(monPacman)
+ 
 
 }
   
