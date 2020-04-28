@@ -25,9 +25,9 @@ let maGrille = [
 
 let pacman = {
   
-   y:2, 
+   y:1, 
    x:5,
-  
+  //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
    direction:1
 
  }
@@ -94,13 +94,66 @@ document.getElementById('grillePacman').appendChild(blocPacman)
 
 }
 
+
+
+function deplacePacman(){
+
+if(pacman.direction==1){
+  pacman.x++
+}
+
+else if(pacman.direction==2){
+pacman.y--
+}
+
+else if(pacman.direction==3){
+pacman.x--
+}
+
+  else if(pacman.direction==4){
+  pacman.y++
+  }
+
+   
+  if(maGrille[pacman.y][pacman.x]==0)
+  {
+    if(pacman.direction==1){
+      pacman.x--
+    }
+
+    else if(pacman.direction==2){
+      pacman.y++
+      }
+
+
+      else if(pacman.direction==3){
+        pacman.x++
+        }
+
+        else if(pacman.direction==4){
+          pacman.y--
+          }
+  }
+
+
+}
+
+
+function touchePacman(){
+
+
+  
+}
+
+
+
 function refresh()
 {
   
-  
+  deplacePacman()
   affichageGrille()
   affichePacman()
-  setTimeout(refresh, 1000)
+  setTimeout(refresh, 500)
 
 }
 
