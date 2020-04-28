@@ -142,7 +142,7 @@ pacman.x--
 function touchePacman(){
 
 
-  
+
 }
 
 
