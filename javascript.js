@@ -26,7 +26,7 @@ let maGrille = [
 let pacman = {
   
    y:1, 
-   x:5,
+   x:1,
   //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
    direction:1
 
@@ -115,8 +115,7 @@ pacman.x--
   }
 
    
-  if(maGrille[pacman.y][pacman.x]==0)
-  {
+  if(maGrille[pacman.y][pacman.x]==0){
     if(pacman.direction==1){
       pacman.x--
     }
@@ -136,14 +135,20 @@ pacman.x--
   }
 
 
+  if(maGrille[pacman.y][pacman.x]==2){
+ 
+    
+
+  }
+
+
+
+
+
 }
 
 
-function touchePacman(){
 
-
-
-}
 
 
 
