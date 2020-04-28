@@ -25,12 +25,24 @@ let maGrille = [
 
 let pacman = {
   
-   y:1, 
+   y:2, 
    x:1,
   //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
    direction:1
 
  }
+
+ let fantôme = {
+  
+  y:11, 
+  x:9,
+ //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
+  direction:1
+
+}
+
+
+ let score = 0 
 
 
 function affichageGrille(){
@@ -84,13 +96,19 @@ function affichePacman(){
 
   let blocPacman = document.createElement('div');
         blocPacman.id='pacman';
-        blocPacman.style.gridColumn=pacman.x+1;
-        blocPacman.style.gridRow=pacman.y+1;
+        blocPacman.style.gridColumn=pacman.x;
+        blocPacman.style.gridRow=pacman.y;
 
 
 document.getElementById('grillePacman').appendChild(blocPacman)
 
 
+
+}
+
+function afficheScore(){
+
+  document.getElementById('score').innerHTML= score
 
 }
 
@@ -103,7 +121,7 @@ if(pacman.direction==1){
 }
 
 else if(pacman.direction==2){
-pacman.y--
+pacman.y++
 }
 
 else if(pacman.direction==3){
@@ -111,17 +129,30 @@ pacman.x--
 }
 
   else if(pacman.direction==4){
-  pacman.y++
+  pacman.y--
+  }
+
+
+  if(pacman.x>maGrille[0].length){
+
+    pacman.x=1
+  
+  }
+
+  if(pacman.x<1){
+
+    pacman.x=maGrille[0].length
+  
   }
 
    
-  if(maGrille[pacman.y][pacman.x]==0){
+  if(maGrille[pacman.y-1][pacman.x-1]==0){
     if(pacman.direction==1){
       pacman.x--
     }
 
     else if(pacman.direction==2){
-      pacman.y++
+      pacman.y--
       }
 
 
@@ -130,26 +161,50 @@ pacman.x--
         }
 
         else if(pacman.direction==4){
-          pacman.y--
+          pacman.y++
           }
   }
 
 
-  if(maGrille[pacman.y][pacman.x]==2){
  
-    
-
-  }
 
 
+
+
+  if(maGrille[pacman.y-1][pacman.x-1]==2){
+
+    maGrille[pacman.y-1][pacman.x-1]=1
+    score=score+1
+ }
+
+
+ 
 
 
 
 }
 
+function appuieTouche(e){
+console.log(e.key)
 
+if(e.key=="z"){
+pacman.direction=4
+}
 
+else if(e.key=="s"){
+pacman.direction=2
+}
 
+else if(e.key=="q"){
+  pacman.direction=3
+  }
+  
+
+  else if(e.key=="d"){
+    pacman.direction=1
+    }
+
+  }
 
 
 function refresh()
@@ -158,10 +213,14 @@ function refresh()
   deplacePacman()
   affichageGrille()
   affichePacman()
+  afficheScore()
   setTimeout(refresh, 500)
 
 }
 
 
 refresh()
+
+
+document.body.addEventListener("keydown",appuieTouche)
 

@@ -11,15 +11,23 @@
 
 
 .mur{
-    background-color: blue;
+    background-image: url(./img/imgMur.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 
 .sol{
-    background-color: black;
+    background-image: url(./img/sol1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .bonbon{
-    background-image: url(./img/bonbon.gif);
+    background-image: url(./img/bonbon2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
@@ -36,4 +44,8 @@
     justify-content: center;
     align-items: center;
     
+}
+
+h2{
+    text-align: center;
 }
