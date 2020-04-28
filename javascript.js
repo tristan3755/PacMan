@@ -32,10 +32,10 @@ let pacman = {
 
  }
 
- let fantôme = {
+ let fantome = {
   
   y:11, 
-  x:9,
+  x:10,
  //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
   direction:1
 
@@ -103,6 +103,19 @@ function affichePacman(){
 document.getElementById('grillePacman').appendChild(blocPacman)
 
 
+
+}
+
+
+function afficheFantome(){
+
+  let blocFantome = document.createElement('div');
+  blocFantome.id='fantome';
+  blocFantome.style.gridColumn=fantome.x;
+  blocFantome.style.gridRow=fantome.y;
+
+
+document.getElementById('grillePacman').appendChild(blocFantome)
 
 }
 
@@ -184,6 +197,54 @@ pacman.x--
 
 }
 
+
+
+function deplaceFantome(){
+
+  fantome.direction=getRandomInt(4)
+
+  if(fantome.direction==1){
+    fantome.x++
+  }
+  
+  else if(fantome.direction==2){
+  fantome.y++
+  }
+  
+  else if(fantome.direction==3){
+  fantome.x--
+  }
+  
+    else if(fantome.direction==4){
+    fantome.y--
+    }
+
+
+ 
+    if(maGrille[fantome.y-1][fantome.x-1]==0){
+      if(fantome.direction==1){
+        fantome.x--
+      }
+  
+      else if(fantome.direction==2){
+        fantome.y--
+        }
+  
+  
+        else if(fantome.direction==3){
+          fantome.x++
+          }
+  
+          else if(fantome.direction==4){
+            fantome.y++
+            }
+    }
+
+
+
+}
+
+
 function appuieTouche(e){
 console.log(e.key)
 
@@ -207,12 +268,39 @@ else if(e.key=="q"){
   }
 
 
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+
+  function collision(){
+
+if(pacman.x==fantome.x){
+
+
+
+if(pacman.y==fantome.y){
+
+alert("vous avez perdu ")
+
+  }
+
+}
+
+
+  }
+
 function refresh()
 {
-  
+
+  getRandomInt(4)
+  collision()
   deplacePacman()
+  deplaceFantome()
+  collision()
   affichageGrille()
   affichePacman()
+  afficheFantome()
   afficheScore()
   setTimeout(refresh, 500)
 
