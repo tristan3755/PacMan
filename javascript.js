@@ -352,11 +352,7 @@ deplaceFantome()
   }
 
 
-  if(goOn==true){
-
-    setTimeout(refresh, 500)
-    
-  }
+ 
 
   affichageGrille()
   affichePacman()
@@ -369,6 +365,12 @@ deplaceFantome()
 
   }
   
+
+  if(goOn==true){
+
+    setTimeout(refresh, 500)
+    
+  }
 
 }
 
