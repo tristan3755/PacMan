@@ -45,6 +45,9 @@ let pacman = {
  let score = 0 
 
 
+ 
+
+
  function jaiGagné(){
 
   let compteur=0

@@ -18,9 +18,8 @@
 }
 
 .sol{
-    background-image: url(./img/sol1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+  
+    background-color: black;
 }
 
 .bonbon{
@@ -63,9 +62,6 @@ bottom: 0;
 right: 0;
 left: 0;
 margin: 0 auto;
-background-image: url(./img/fond.jpg);
-background-size: cover;
-background-repeat: no-repeat;
 
 
 }
