@@ -27,7 +27,7 @@ let pacman = {
   
    y:2, 
    x:1,
-  //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
+  //direction de départ de pacman (haut :4 , bas :2, gauche : 3, droite : 1)
    direction:1
 
  }
@@ -43,6 +43,39 @@ let pacman = {
 
 
  let score = 0 
+
+
+ function jaiGagné(){
+
+  let compteur=0
+
+ for(let i in maGrille){
+
+  for(let j in maGrille[i]){
+
+    if(maGrille[i][j]==2){
+
+      
+      compteur++
+
+
+
+    }
+
+  }
+
+ }
+
+ if(compteur==0){
+  
+ alert("trop fort ma gueule ")
+
+ return true
+ }
+
+ return false
+
+ }
 
 
 function affichageGrille(){
@@ -283,26 +316,59 @@ if(pacman.y==fantome.y){
 
 alert("vous avez perdu ")
 
+return true
+
   }
 
 }
 
+return false
+  }
+
+
+  
+
+
+  
+function refresh()
+{
+let goOn = true 
+
+deplacePacman()
+
+
+if(collision()){
+
+  goOn = false
+
+}
+
+deplaceFantome()
+  
+  if(collision()){
+
+    goOn = false
 
   }
 
-function refresh()
-{
 
-  getRandomInt(4)
-  collision()
-  deplacePacman()
-  deplaceFantome()
-  collision()
+  if(goOn==true){
+
+    setTimeout(refresh, 500)
+    
+  }
+
   affichageGrille()
   affichePacman()
   afficheFantome()
   afficheScore()
-  setTimeout(refresh, 500)
+
+  if(jaiGagné()){
+
+    goOn = false
+
+  }
+  
 
 }
 
