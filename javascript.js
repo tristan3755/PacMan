@@ -312,9 +312,23 @@ function deplaceFantome(numFant){
   tabFantome[numFant].x--
   }
   
-    else if(tabFantome.direction==4){
+    else if(tabFantome[numFant].direction==4){
     tabFantome[numFant].y--
     }
+
+
+    if(tabFantome[numFant].x>maGrille[0].length){
+
+      tabFantome[numFant].x=1
+    
+    }
+  
+    if(tabFantome[numFant].x<1){
+  
+      tabFantome[numFant].x=maGrille[0].length
+    
+    }
+  
 
 
  
@@ -373,7 +387,7 @@ else if(e.key=="q"){
 
 /*collision*/
 
-  function collision(){
+  function collision(numFant){
 
 if(pacman.x==tabFantome[numFant].x){
 
@@ -404,24 +418,21 @@ let goOn = true
 deplacePacman()
 
 
-/*if(collision()){
-
-  goOn = false
-
-}
-
-deplaceFantome()
-  
-  if(collision()){
-
-    goOn = false
-
-  }*/
 
 
   for(let i in tabFantome)
 {
+  if(collision(i)){
+
+    goOn = false
+
+  }
   deplaceFantome(i)
+  if(collision(i)){
+
+    goOn = false
+
+  }
 }
 
 
@@ -429,7 +440,7 @@ deplaceFantome()
 
   affichageGrille()
   affichePacman()
-  /*afficheFantome()*/
+  
 
   for(let i in tabFantome)
 {
