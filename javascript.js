@@ -32,20 +32,34 @@ let pacman = {
 
  }
 
- let fantome = {
-  
-  y:11, 
-  x:10,
- //direction de départ de pacman (haut :4 , bas : 2, gauche : 3, droite : 1)
-  direction:1
 
-}
+ let tabFantome = [
+  {
+    x:11,
+    y:11,
+    direction:1
+  },
+  {
+    x:11,
+    y:11,
+    direction:1
+  },
+  {
+    x:11,
+    y:11,
+    direction:1
+  },
+  {
+    x:11,
+    y:11,
+    direction:1
+  }]
 
 
  let score = 0 
 
 
- 
+
 
 
  function jaiGagné(){
@@ -130,6 +144,7 @@ for(let i in maGrille){
 function affichePacman(){
 
 
+
   let blocPacman = document.createElement('div');
         blocPacman.id='pacman';
         blocPacman.style.gridColumn=pacman.x;
@@ -143,12 +158,19 @@ document.getElementById('grillePacman').appendChild(blocPacman)
 }
 
 
-function afficheFantome(){
+function afficheFantome(numFant){
 
   let blocFantome = document.createElement('div');
   blocFantome.id='fantome';
-  blocFantome.style.gridColumn=fantome.x;
-  blocFantome.style.gridRow=fantome.y;
+  blocFantome.style.gridColumn=tabFantome[numFant].x;
+  blocFantome.style.gridRow=tabFantome[numFant].y;
+
+
+  if(tabFantome[numFant]==1){
+
+    blocFantome.id='fantome1';
+
+  }
 
 
 document.getElementById('grillePacman').appendChild(blocFantome)
@@ -235,44 +257,44 @@ pacman.x--
 
 
 
-function deplaceFantome(){
+function deplaceFantome(numFant){
 
-  fantome.direction=getRandomInt(4)
+  tabFantome[numFant].direction=getRandomInt(4)
 
-  if(fantome.direction==1){
-    fantome.x++
+  if(tabFantome[numFant].direction==1){
+    tabFantome[numFant].x++
   }
   
-  else if(fantome.direction==2){
-  fantome.y++
+  else if(tabFantome[numFant].direction==2){
+  tabFantome[numFant].y++
   }
   
-  else if(fantome.direction==3){
-  fantome.x--
+  else if(tabFantome[numFant].direction==3){
+  tabFantome[numFant].x--
   }
   
-    else if(fantome.direction==4){
-    fantome.y--
+    else if(tabFantome.direction==4){
+    tabFantome[numFant].y--
     }
 
 
  
-    if(maGrille[fantome.y-1][fantome.x-1]==0){
-      if(fantome.direction==1){
-        fantome.x--
+    if(maGrille[tabFantome[numFant].y-1][tabFantome[numFant].x-1]==0){
+      if(tabFantome[numFant].direction==1){
+        tabFantome[numFant].x--
       }
   
-      else if(fantome.direction==2){
-        fantome.y--
+      else if(tabFantome[numFant].direction==2){
+        tabFantome[numFant].y--
         }
   
   
-        else if(fantome.direction==3){
-          fantome.x++
+        else if(tabFantome[numFant].direction==3){
+          tabFantome[numFant].x++
           }
   
-          else if(fantome.direction==4){
-            fantome.y++
+          else if(tabFantome[numFant].direction==4){
+            tabFantome[numFant].y++
             }
     }
 
@@ -311,11 +333,11 @@ else if(e.key=="q"){
 
   function collision(){
 
-if(pacman.x==fantome.x){
+if(pacman.x==tabFantome[numFant].x){
 
 
 
-if(pacman.y==fantome.y){
+if(pacman.y==tabFantome[numFant].y){
 
 alert("vous avez perdu ")
 
@@ -340,7 +362,7 @@ let goOn = true
 deplacePacman()
 
 
-if(collision()){
+/*if(collision()){
 
   goOn = false
 
@@ -352,14 +374,25 @@ deplaceFantome()
 
     goOn = false
 
-  }
+  }*/
+
+
+  for(let i in tabFantome)
+{
+  deplaceFantome(i)
+}
 
 
  
 
   affichageGrille()
   affichePacman()
-  afficheFantome()
+  /*afficheFantome()*/
+
+  for(let i in tabFantome)
+{
+  afficheFantome(i)
+}
   afficheScore()
 
   if(jaiGagné()){
