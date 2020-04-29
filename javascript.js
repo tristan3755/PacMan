@@ -1,3 +1,7 @@
+/*tableau*/
+
+
+
 let maGrille = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,2,2,2,2,2,2,2,2,0,2,2,2,2,2,2,2,2,0],
@@ -34,6 +38,14 @@ let pacman = {
 
 
  let tabFantome = [
+
+  {
+    x:11,
+    y:11,
+    direction:1
+  },
+
+
   {
     x:11,
     y:11,
@@ -56,11 +68,13 @@ let pacman = {
   }]
 
 
+  /*tableau*/
+
+
  let score = 0 
 
 
-
-
+/* fonctions j'ai gangé */
 
  function jaiGagné(){
 
@@ -83,6 +97,7 @@ let pacman = {
 
  }
 
+
  if(compteur==0){
   
  alert("trop fort ma gueule ")
@@ -93,6 +108,11 @@ let pacman = {
  return false
 
  }
+
+ /* fonctions j'ai gangé */
+
+
+ /*affichage*/
 
 
 function affichageGrille(){
@@ -166,11 +186,27 @@ function afficheFantome(numFant){
   blocFantome.style.gridRow=tabFantome[numFant].y;
 
 
-  if(tabFantome[numFant]==1){
+  if([numFant]==1){
 
     blocFantome.id='fantome1';
 
   }
+
+
+  else if([numFant]==2){
+
+    blocFantome.id='fantome2';
+
+  }
+
+
+  if([numFant]==3){
+
+    blocFantome.id='fantome3';
+
+  }
+
+  
 
 
 document.getElementById('grillePacman').appendChild(blocFantome)
@@ -183,7 +219,10 @@ function afficheScore(){
 
 }
 
+/*affichage*/
 
+
+/*déplacement*/
 
 function deplacePacman(){
 
@@ -301,7 +340,9 @@ function deplaceFantome(numFant){
 
 
 }
+/*déplacement*/
 
+/*appuie touche*/
 
 function appuieTouche(e){
 console.log(e.key)
@@ -324,12 +365,13 @@ else if(e.key=="q"){
     }
 
   }
-
+/*appuie touche*/
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
+/*collision*/
 
   function collision(){
 
@@ -351,7 +393,7 @@ return false
   }
 
 
-  
+  /*collision*/
 
 
   
