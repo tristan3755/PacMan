@@ -220,7 +220,7 @@ monPacman.deplacePacman()
     goOn = false
 
   }
-  tabFantome[i].deplaceFantome
+  tabFantome[i].deplaceFantome()
   if(collision(i)){
 
     goOn = false
@@ -237,7 +237,7 @@ monPacman.deplacePacman()
 
   for(let i in tabFantome)
 {
-  tabFantome[i].afficheFantome
+  tabFantome[i].afficheFantome()
 }
   afficheScore()
 
