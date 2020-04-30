@@ -27,14 +27,7 @@ let maGrille = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 ]
 
-let pacman = {
-  
-   y:2, 
-   x:1,
-  //direction de départ de pacman (haut :4 , bas :2, gauche : 3, droite : 1)
-   direction:1
-
- }
+let monPacman = new pacman(2,1,1)
 
 
  let tabFantome = [
@@ -161,21 +154,8 @@ for(let i in maGrille){
 }
 
 }
-function affichePacman(){
 
 
-
-  let blocPacman = document.createElement('div');
-        blocPacman.id='pacman';
-        blocPacman.style.gridColumn=pacman.x;
-        blocPacman.style.gridRow=pacman.y;
-
-
-document.getElementById('grillePacman').appendChild(blocPacman)
-
-
-
-}
 
 
 function afficheFantome(numFant){
@@ -224,75 +204,6 @@ function afficheScore(){
 
 /*déplacement*/
 
-function deplacePacman(){
-
-if(pacman.direction==1){
-  pacman.x++
-}
-
-else if(pacman.direction==2){
-pacman.y++
-}
-
-else if(pacman.direction==3){
-pacman.x--
-}
-
-  else if(pacman.direction==4){
-  pacman.y--
-  }
-
-
-  if(pacman.x>maGrille[0].length){
-
-    pacman.x=1
-  
-  }
-
-  if(pacman.x<1){
-
-    pacman.x=maGrille[0].length
-  
-  }
-
-   
-  if(maGrille[pacman.y-1][pacman.x-1]==0){
-    if(pacman.direction==1){
-      pacman.x--
-    }
-
-    else if(pacman.direction==2){
-      pacman.y--
-      }
-
-
-      else if(pacman.direction==3){
-        pacman.x++
-        }
-
-        else if(pacman.direction==4){
-          pacman.y++
-          }
-  }
-
-
- 
-
-
-
-
-  if(maGrille[pacman.y-1][pacman.x-1]==2){
-
-    maGrille[pacman.y-1][pacman.x-1]=1
-    score=score+1
- }
-
-
- 
-
-
-
-}
 
 
 
@@ -362,20 +273,20 @@ function appuieTouche(e){
 console.log(e.key)
 
 if(e.key=="z"){
-pacman.direction=4
+monPacman.direction=4
 }
 
 else if(e.key=="s"){
-pacman.direction=2
+  monPacman.direction=2
 }
 
 else if(e.key=="q"){
-  pacman.direction=3
+  monPacman.direction=3
   }
   
 
   else if(e.key=="d"){
-    pacman.direction=1
+    monPacman.direction=1
     }
 
   }
@@ -389,11 +300,11 @@ else if(e.key=="q"){
 
   function collision(numFant){
 
-if(pacman.x==tabFantome[numFant].x){
+if(monPacman.x==tabFantome[numFant].x){
 
 
 
-if(pacman.y==tabFantome[numFant].y){
+if(monPacman.y==tabFantome[numFant].y){
 
 alert("vous avez perdu ")
 
@@ -415,7 +326,7 @@ function refresh()
 {
 let goOn = true 
 
-deplacePacman()
+monPacman.deplacePacman()
 
 
 
@@ -439,8 +350,8 @@ deplacePacman()
  
 
   affichageGrille()
-  affichePacman()
   
+  monPacman.affichePacman()
 
   for(let i in tabFantome)
 {
