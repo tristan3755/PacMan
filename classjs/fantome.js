@@ -57,7 +57,9 @@ this.name=name
 
  deplaceFantome(){
 
-    this.direction=getRandomInt(4)
+    this.direction=getRandomInt(5)
+    this.direction%4
+
   
     if(this.direction==1){
         this.x++

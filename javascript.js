@@ -30,7 +30,7 @@ let maGrille = [
 let monPacman = new pacman(2,1,1)
 
 
-let tabFantome = [ new fantome(10,10,1,0), new fantome(10,10,1,1),new fantome(10,10,1,2),new fantome(10,10,1,3)]
+let tabFantome = [ new fantome(11,10,1,0), new fantome(11,10,1,1),new fantome(11,10,1,2),new fantome(11,10,1,3),new fantome(11,10,1,3)]
 
 
   /*tableau*/
@@ -51,10 +51,7 @@ let tabFantome = [ new fantome(10,10,1,0), new fantome(10,10,1,1),new fantome(10
 
     if(maGrille[i][j]==2){
 
-      
-      compteur++
-
-
+       compteur++
 
     }
 
@@ -159,7 +156,14 @@ else if(e.key=="q"){
     }
 
   }
+
+
 /*appuie touche*/
+
+
+
+
+
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
