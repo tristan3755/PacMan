@@ -127,11 +127,6 @@ for(let i in maGrille){
 
 }
 
-
-
-
-
-
 function afficheScore(){
 
   document.getElementById('score').innerHTML= score
@@ -140,14 +135,6 @@ function afficheScore(){
 
 /*affichage*/
 
-
-/*déplacement*/
-
-
-
-
-
-/*déplacement*/
 
 /*appuie touche*/
 
@@ -180,13 +167,11 @@ else if(e.key=="q"){
 
 /*collision*/
 
-  function collision(numFant){
+  function collision(i){
 
-if(monPacman.x==tabFantome[numFant].x){
+if(monPacman.x==tabFantome[i].x){
 
-
-
-if(monPacman.y==tabFantome[numFant].y){
+if(monPacman.y==tabFantome[i].y){
 
 alert("vous avez perdu ")
 
