@@ -30,35 +30,7 @@ let maGrille = [
 let monPacman = new pacman(2,1,1)
 
 
- let tabFantome = [
-
-  {
-    x:11,
-    y:11,
-    direction:1
-  },
-
-
-  {
-    x:11,
-    y:11,
-    direction:1
-  },
-  {
-    x:11,
-    y:11,
-    direction:1
-  },
-  {
-    x:11,
-    y:11,
-    direction:1
-  },
-  {
-    x:11,
-    y:11,
-    direction:1
-  }]
+let tabFantome = [ new fantome(10,10,1,0), new fantome(10,10,1,1),new fantome(10,10,1,2),new fantome(10,10,1,3)]
 
 
   /*tableau*/
@@ -158,40 +130,7 @@ for(let i in maGrille){
 
 
 
-function afficheFantome(numFant){
 
-  let blocFantome = document.createElement('div');
-  blocFantome.id='fantome';
-  blocFantome.style.gridColumn=tabFantome[numFant].x;
-  blocFantome.style.gridRow=tabFantome[numFant].y;
-
-
-  if([numFant]==1){
-
-    blocFantome.id='fantome1';
-
-  }
-
-
-  else if([numFant]==2){
-
-    blocFantome.id='fantome2';
-
-  }
-
-
-  if([numFant]==3){
-
-    blocFantome.id='fantome3';
-
-  }
-
-  
-
-
-document.getElementById('grillePacman').appendChild(blocFantome)
-
-}
 
 function afficheScore(){
 
@@ -207,64 +146,7 @@ function afficheScore(){
 
 
 
-function deplaceFantome(numFant){
 
-  tabFantome[numFant].direction=getRandomInt(4)
-
-  if(tabFantome[numFant].direction==1){
-    tabFantome[numFant].x++
-  }
-  
-  else if(tabFantome[numFant].direction==2){
-  tabFantome[numFant].y++
-  }
-  
-  else if(tabFantome[numFant].direction==3){
-  tabFantome[numFant].x--
-  }
-  
-    else if(tabFantome[numFant].direction==4){
-    tabFantome[numFant].y--
-    }
-
-
-    if(tabFantome[numFant].x>maGrille[0].length){
-
-      tabFantome[numFant].x=1
-    
-    }
-  
-    if(tabFantome[numFant].x<1){
-  
-      tabFantome[numFant].x=maGrille[0].length
-    
-    }
-  
-
-
- 
-    if(maGrille[tabFantome[numFant].y-1][tabFantome[numFant].x-1]==0){
-      if(tabFantome[numFant].direction==1){
-        tabFantome[numFant].x--
-      }
-  
-      else if(tabFantome[numFant].direction==2){
-        tabFantome[numFant].y--
-        }
-  
-  
-        else if(tabFantome[numFant].direction==3){
-          tabFantome[numFant].x++
-          }
-  
-          else if(tabFantome[numFant].direction==4){
-            tabFantome[numFant].y++
-            }
-    }
-
-
-
-}
 /*déplacement*/
 
 /*appuie touche*/
@@ -338,7 +220,7 @@ monPacman.deplacePacman()
     goOn = false
 
   }
-  deplaceFantome(i)
+  tabFantome[i].deplaceFantome
   if(collision(i)){
 
     goOn = false
@@ -355,7 +237,7 @@ monPacman.deplacePacman()
 
   for(let i in tabFantome)
 {
-  afficheFantome(i)
+  tabFantome[i].afficheFantome
 }
   afficheScore()
 
